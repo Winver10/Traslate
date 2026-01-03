@@ -35,8 +35,34 @@ int findBlank(std::string input)
 		return -1; // Return -1 if no blank space is found
 }
 
-std::string getAction(std::string input)
+int getAction(std::string input)
 {
 	int blankIndex = findBlank(input);
+	if (blankIndex == -1)
+	{
+		return -1; // Return -1 if no blank space is found
+	}
+	else
+	{
+		size_t response;
+		int result = std::stoi(input.substr(0, blankIndex), &response);
+		if (response == input.substr(0, blankIndex).size())
+		{
+			return result;
+		}
+		else
+		{
+			return -1; // Return -1 if conversion fails
+		}
+	}
+}
 
+
+auto returnCommand(std::string input) -> command
+{
+	command result;
+	result.action = returnInput(input);
+	result.indexOfContent = getAction(input.substr(4));
+	result.content = returnContent(input);
+	return result;	
 }

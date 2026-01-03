@@ -139,25 +139,62 @@ int main() {
 	while (isRunning)
 	{
 		input = getInput();
-		status = returnInput(input);
-		content = returnContent(input);
-		swich(status)
+		command cmd = returnCommand(input);
+		switch (cmd.action)
 		{
-			case 1:
-				if (content.empty())
+		case 1:
+			if (content.empty())
+			{
+				cout << "You need to tell me what to add!" << endl;
+			}
+			else
+			{
+				list.push_back(cmd.content);
+				saveToDoList(list);
+				cout << "OK, I remind you want to do: " << cmd.content << endl;
+			}
+			break;
+		case 2:
+			if (list.empty())
+			{
+				cout << "There is nothing. You can add an item now." << endl;
+				break;
+			
+			}
+			else
+			{
+				if (cmd.content.empty() || (!(cmd.indexOfContent > list.size()) || cmd.indexOfContent == -1))
 				{
-					cout << "You need to tell me what to add!" << endl;
+					cout << "Do you think you are doing the thing you want in a right way?" << endl;
 				}
 				else
 				{
-					list.push_back(content);
+					list[cmd.indexOfContent - 1] = cmd.content;
 					saveToDoList(list);
-					cout << "OK, I remind you want to do: " << content << endl;
+					cout << "OK, I remind what you changed it to: " << cmd.content << endl;
 				}
-				break;
-			case 2:
-				if
-		}
+			}
+			break;
+		case 3:
+			if (list.empty())
+			{
+				cout << "There is nothing. You can add an item now." << endl;
+			}
+			else
+			{
+				if (!(cmd.indexOfContent > list.size()) || cmd.indexOfContent == -1)
+				{
+					cout << "Do you think you are doing the thing you want in a right way?" << endl;
+				}
+				else
+				{
+					string deletItem = list[cmd.indexOfContent - 1];
+					list.erase(list.begin() + cmd.indexOfContent - 1);
+					saveToDoList(list);
+					cout << "OK, I deleted: " << deletItem << endl;
+				}
+			}
+		};
 		
 
 
