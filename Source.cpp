@@ -138,6 +138,7 @@ int main() {
 
 	while (isRunning)
 	{
+		DisplayList(list);
 		input = getInput();
 		command cmd = returnCommand(input);
 		switch (cmd.action)
@@ -194,6 +195,10 @@ int main() {
 					cout << "OK, I deleted: " << deletItem << endl;
 				}
 			}
+		case 4:
+				isRunning = 0;
+				cout << "Goodbye! Have a nice day!" << endl;
+				break;
 		};
 		
 
