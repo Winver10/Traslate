@@ -12,3 +12,4 @@ inline std::string getInput()
 int returnInput(std::string input);
 std::string returnContent(std::string input);
 std::string getAction(std::string input);
+int findBlank(std::string input);

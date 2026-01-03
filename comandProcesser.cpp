@@ -25,7 +25,18 @@ std::string returnContent(std::string input)
 	return "";
 }
 
+int findBlank(std::string input)
+{
+		for (size_t i = 0; i < input.size(); ++i)
+	{
+		if (input[i] == ' ')
+			return i;
+	}
+		return -1; // Return -1 if no blank space is found
+}
+
 std::string getAction(std::string input)
 {
-	
+	int blankIndex = findBlank(input);
+
 }
