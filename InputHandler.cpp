@@ -2,6 +2,10 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cctype>
+
+// This file provides implementations for input handling functions
+// that were declared in getInput.hxx
 
 int returnInput(std::string input)
 { 
@@ -42,7 +46,7 @@ std::string getAction(std::string input)
     return input;
 }
 
-int getItemNumber(const std::string& input) {
+int getItemNumber(const std::string input) {
     std::istringstream iss(input);
     std::string action;
     int number;
